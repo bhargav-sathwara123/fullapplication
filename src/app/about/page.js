@@ -1,10 +1,11 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import styles from "./about.module.scss"
 import Image from 'next/image'
 import boat from "../../images/planImage.jpg"
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger';
+
 
 gsap.registerPlugin(ScrollTrigger);
 const page = () => {
@@ -12,16 +13,19 @@ const page = () => {
 	const firstSectionRef = useRef();
 	const secondSectionRef = useRef();
 	const thirdSectionRef = useRef();
+	const component = useRef();
+	const slider = useRef();
 	useEffect(() => {
 		gsap.fromTo(
 			headingRef.current,
-			{ fontSize: "140px" },
+			{ rotate: 0, transition: "ease-in-out" },
 			{
-				fontSize: "60px",
+
+				rotate: 180,
 				scrollTrigger: {
 					trigger: headingRef.current,
-					start: 'top 20%', // Adjust this value based on when you want the animation to start
-					end: 'bottom 30%', // Adjust this value based on when you want the animation to end
+					start: 'top 25%', // Adjust this value based on when you want the animation to start
+					end: 'bottom 70%', // Adjust this value based on when you want the animation to end
 					toggleActions: 'play none none reverse',
 					scrub: true,
 				},
@@ -30,56 +34,76 @@ const page = () => {
 		)
 		gsap.fromTo(
 			firstSectionRef.current,
-			{ right: "0" },
+			{ rotate: 360, scale: (1) },
 			{
-				right: "1700px",
+				rotate: 0,
+				scale: (0.2),
+				borderRadius: "90px",
 				scrollTrigger: {
 					trigger: firstSectionRef.current,
-					start: 'top -20%', // Adjust this value based on when you want the animation to start
-					end: 'bottom 20%', // Adjust this value based on when you want the animation to end
+					start: 'top 0%', // Adjust this value based on when you want the animation to start
+					end: 'bottom 0%', // Adjust this value based on when you want the animation to end
 					toggleActions: 'play none none reverse',
-					scrub: 3.5,
+					scrub: 1.5,
 				},
 
 			}
 		)
 		gsap.fromTo(
 			secondSectionRef.current,
-			{ right: "0" },
+			{ scale: (0.5) },
 			{
-				
-				right: "1700px",
+
+				scale: (1),
 				scrollTrigger: {
 					trigger: secondSectionRef.current,
-					start: 'top 10%', // Adjust this value based on when you want the animation to start
-					end: 'bottom 30%', // Adjust this value based on when you want the animation to end
+					start: 'top 60%', // Adjust this value based on when you want the animation to start
+					end: 'bottom 90%', // Adjust this value based on when you want the animation to end
 					toggleActions: 'play none none reverse',
-					scrub: 2.5,
+					scrub: 1.5,
 				},
 
 			}
 		)
 		gsap.fromTo(
 			thirdSectionRef.current,
-			{ right: "0" },
+			{ scale: (1) },
 			{
-				
-				right: "1700px",
+
+				scale: (0.3),
 				scrollTrigger: {
 					trigger: thirdSectionRef.current,
 					start: 'top 10%', // Adjust this value based on when you want the animation to start
 					end: 'bottom 0%', // Adjust this value based on when you want the animation to end
 					toggleActions: 'play none none reverse',
-					scrub: 2.5,
+					scrub: 1.5,
 				},
 
 			}
 		)
 	})
+	useLayoutEffect(() => {
+		let ctx = gsap.context(() => {
+			let panels = gsap.utils.toArray(".panel");
+			gsap.to(panels, {
+				xPercent: -100 * (panels.length - 1),
+				ease: "none",
+				scrollTrigger: {
+					trigger: slider.current,
+					pin: true,
+					scrub: 1,
+					snap: 1 / (panels.length - 1),
+					end: () => "+=" + slider.current.offsetWidth,
+					markers: true
+				}
+			});
+		}, component);
+		return () => ctx.revert();
+	});
 
 	return (
-		<div className={styles.main}>
-			<section className={styles.fistDiv} ref={firstSectionRef}>
+		<div className={styles.main} ref={component}>
+			{/* <section className={styles.fistDiv} ref={firstSectionRef}>
 				<div >
 					<h1 ref={headingRef}>
 						this is boat flying
@@ -103,6 +127,25 @@ const page = () => {
 				</div>
 
 			</section>
+
+ */}
+
+			<div >
+
+				<div ref={slider} className="container">
+					<div className={styles.description}> {/*panel blue*/}
+						<div>
+							SCROLL DOWN
+							<div className="scroll-down">
+								<div className="arrow"></div>
+							</div>
+						</div>
+					</div>
+					<div className={styles.red}>ONE</div>
+					<div className={styles.orange}>TWO</div>
+					<div className={styles.purple}>THREE</div>
+				</div>
+			</div>
 		</div>
 	)
 }
