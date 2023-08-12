@@ -1,0 +1,37 @@
+.main {
+  section {
+    // padding: 30px;
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      text-shadow: 3px 3px 5px rgb(43, 42, 42);
+    }
+  }
+}
+.fistDiv,  .thirdDiv {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  overflow: hidden;
+}
+.sescondDiv{
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: yellow;
+  overflow: hidden;
+}
+.thirdDiv{
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: blueviolet;
+  overflow: hidden;
+}

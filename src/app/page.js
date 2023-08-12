@@ -1,95 +1,207 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+
+"use client"
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import styles from './page.module.scss'; // Replace with your module CSS
+import Image from 'next/image';
+import mypic from '../images/Pngwing.png'
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+	const sectionRefs = useRef([]);
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+	const firstDiv = useRef(null);
+	const secondDiv = useRef(null);
+	const thirdDiv = useRef(null);
+	const bigText = useRef(null);
+	const contryName = useRef(null);
+	const BigImage = useRef(null);
+	const secondBigText = useRef(null);
+	const thirdBigText = useRef(null);
+	useEffect(() => {
+		// gsap.fromTo(
+		// 	imageRef.current,
+		// 	{width:"100%", opacity: 1 },
+		// 	{
+		// 		width:"10%",
+		// 		opacity: 0,
+		// 		scrollTrigger: {
+		// 			trigger: imageRef.current,
+		// 			start: 'top 10%', // Adjust this value based on when you want the animation to start
+		// 			end: 'bottom 50%', // Adjust this value based on when you want the animation to end
+		// 			toggleActions: 'play none none reverse',
+		// 			scrub: true,
+		// 		},
+		// 	}
+		// );
+		// gsap.fromTo(
+		// 	firstDiv.current,
+		// 	{ position: "relative", right: "0", opacity: 1 },
+		// 	{
+		// 		position: "relative",
+		// 		right: "100%",
+		// 		opacity: 0,
+		// 		scrollTrigger: {
+		// 			trigger: firstDiv.current,
+		// 			start: 'top 0%', // Adjust this value based on when you want the animation to start
+		// 			end: 'bottom 50%', // Adjust this value based on when you want the animation to end
+		// 			toggleActions: 'play none none reverse',
+		// 			scrub: true,
+		// 		},
+		// 	}
+		// );
+		// sectionRefs.current.forEach((section, index) => {
+		// 	gsap.fromTo(
+		// 		section,
+		// 		{
+		// 			opacity: 0,
+		// 			y: 100,
+		// 		},
+		// 		{
+		// 			opacity: 1,
+		// 			y: 0,
+		// 			duration: 1,
+		// 			scrollTrigger: {
+		// 				trigger: section,
+		// 				start: 'top 80%', // Adjust this value based on when you want the animation to start
+		// 				end: 'bottom 50%', // Adjust this value based on when you want the animation to end
+		// 				toggleActions: 'play none none reverse',
+		// 			},
+		// 		}
+		// 	);
+		// });
+		gsap.fromTo(
+			bigText.current,
+			{ scale: 5.5 },
+			{
+				scale: 0,
+				scrollTrigger: {
+					trigger: bigText.current,
+					start: 'top 30%', // Adjust this value based on when you want the animation to start
+					end: 'bottom 30%', // Adjust this value based on when you want the animation to end
+					toggleActions: 'play none none reverse',
+					scrub: 0.4,
+				},
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+			}
+		)
+		
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+		// gsap.fromTo(
+		// 	secondDiv.current,
+		// 	{
+		// 		opacity: 0,
+		// 		x: -500,
+		// 	},
+		// 	{
+		// 		opacity: 1,
+		// 		x: 0,
+		// 		duration: 1,
+		// 		scrollTrigger: {
+		// 			trigger: secondDiv.current,
+		// 			start: 'top 90%', // Adjust this value based on when you want the animation to start
+		// 			end: 'bottom 60%', // Adjust this value based on when you want the animation to end
+		// 			toggleActions: 'play none none reverse',
+		// 			scrub: true,
+		// 		},
+		// 	}
+		// );
+		gsap.fromTo(
+			secondBigText.current,
+			{ scale: 0.2 },
+			{
+				scale: 2.5,
+				scrollTrigger: {
+					trigger: secondBigText.current,
+					start: 'top 60%', // Adjust this value based on when you want the animation to start
+					end: 'bottom 30%', // Adjust this value based on when you want the animation to end
+					toggleActions: 'play none none reverse',
+					scrub: 0.4,
+				},
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+			}
+		)
+		
+		gsap.fromTo(
+			thirdBigText.current,
+			{ scale: 0.5 },
+			{
+				scale: 2.5,
+				scrollTrigger: {
+					trigger: thirdBigText.current,
+					start: 'top 80%', // Adjust this value based on when you want the animation to start
+					end: 'bottom 50%', // Adjust this value based on when you want the animation to end
+					toggleActions: 'play none none reverse',
+					scrub: 0.4,
+				},
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+			}
+		)
+		gsap.fromTo(
+			BigImage.current,
+			{ rotate:"0"},
+			{
+				rotate:"360",
+				scrollTrigger: {
+					trigger: BigImage.current,
+					start: 'top 30%', // Adjust this value based on when you want the animation to start
+					end: 'bottom 30%', // Adjust this value based on when you want the animation to end
+					toggleActions: 'play none none reverse',
+					scrub: 0.4,
+				},
+
+			}
+		)
+		gsap.fromTo(
+			thirdDiv.current,
+			{
+				opacity: 0,
+				y: 100,
+			},
+			{
+				opacity: 1,
+				y: 50,
+				duration: 1,
+				scrollTrigger: {
+					trigger: thirdDiv.current,
+					start: 'top 80%', // Adjust this value based on when you want the animation to start
+					end: 'bottom 50%', // Adjust this value based on when you want the animation to end
+					toggleActions: 'play none none reverse',
+				},
+			}
+		);
+	}, []);
+
+	return (
+		<>
+			<div className={styles.firstfullDiv} ref={firstDiv}>
+				<h1 ref={bigText}>HAPPY</h1>
+			</div>
+			<div className={styles.secondfullDiv} > {/*ref={secondDiv}*/}
+				<Image src={mypic}
+				ref={BigImage}
+					alt="Picture of the author"
+				/>
+				<h1 ref={secondBigText}>Independence day</h1>
+			</div>
+			<div className={styles.thirdfullDiv} ref={thirdDiv}>
+			<h1 ref={thirdBigText}>INDIA</h1>
+			</div>
+			{/* <div className={styles.sections}>
+
+				<section ref={(el) => (sectionRefs.current[0] = el)}>
+					<h2>1</h2>
+				</section>
+				<section ref={(el) => (sectionRefs.current[1] = el)}>
+					<h2>2</h2>
+				</section>
+				<section ref={(el) => (sectionRefs.current[2] = el)}>
+					<h2>3</h2>
+				</section>
+			</div> */}
+		</>
+	);
 }
