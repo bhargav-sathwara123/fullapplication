@@ -17,10 +17,10 @@ const page = () => {
 			headingRef.current,
 			{ fontSize: "140px" },
 			{
-				fontSize: "15px",
+				fontSize: "60px",
 				scrollTrigger: {
 					trigger: headingRef.current,
-					start: 'top 0%', // Adjust this value based on when you want the animation to start
+					start: 'top 20%', // Adjust this value based on when you want the animation to start
 					end: 'bottom 30%', // Adjust this value based on when you want the animation to end
 					toggleActions: 'play none none reverse',
 					scrub: true,
