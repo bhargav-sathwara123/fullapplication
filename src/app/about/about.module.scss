@@ -8,6 +8,37 @@
     }
   }
 }
+
+.panel {
+  width: 100vw;
+  height: 100vh;
+}
+.red {
+  background: blue;
+  width: 100vw;
+  height: 100vh;
+}
+.red {
+  width: 100vw;
+  height: 100vh;
+  background: red;
+}
+.orange {
+  width: 100vw;
+  height: 100vh;
+  background: orange;
+}
+.purple {
+  width: 100vw;
+  height: 100vh;
+  background: purple;
+}
+.blue {
+  background-color: blue;
+  width: 100vw;
+  height: 100vh;
+}
+
 .fistDiv,  .thirdDiv {
   position: relative;
   height: 100vh;
